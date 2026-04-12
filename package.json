@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && rimraf server/public && mkdir server/public && (cp -r dist/* server/public/ || xcopy /s /e dist server\\public\\)",
+    "build": "vite build && rimraf server/public && node scripts/move-assets.js",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.3.0",
     "rimraf": "^5.0.0",
+    "terser": "^5.31.0",
     "vite": "^6.0.0"
   },
   "devDependencies": {}
