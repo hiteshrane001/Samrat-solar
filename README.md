@@ -33,6 +33,7 @@ Add the following keys in the **Environment** tab on Render:
 | `RAZORPAY_KEY_ID` | Your Razorpay Live/Test Key ID |
 | `RAZORPAY_KEY_SECRET` | Your Razorpay Live/Test Key Secret |
 | `FRONTEND_URL` | Your Render `.onrender.com` URL |
+| `VITE_API_URL` | Your Backend URL (leave empty if same domain) |
 
 ---
 
