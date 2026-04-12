@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useCallback, useEffect } from 'rea
 
 const AdminContext = createContext(null);
 const API_BASE = (import.meta.env.VITE_API_URL || '') + '/api';
-
+// 123 Hitesh rane na  duut ghdo
 export function AdminProvider({ children }) {
   const [adminUser, setAdminUser] = useState(null);
   const [adminPage, setAdminPage] = useState('dashboard');
@@ -24,7 +24,7 @@ export function AdminProvider({ children }) {
         body: JSON.stringify({ email, password })
       });
       const data = await res.json();
-      
+
       if (!res.ok) {
         throw new Error(data.message || 'Login failed');
       }
@@ -97,21 +97,21 @@ export function AdminProvider({ children }) {
     try {
       const token = getToken();
       console.log('🔍 Fetching products with token:', token ? 'YES' : 'NO');
-      
+
       const res = await fetch(`${API_BASE}/admin/products`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      
+
       console.log('📡 Response status:', res.status);
       const data = await res.json();
       console.log('📦 Response data:', data);
-      
+
       if (!res.ok) {
         const errorMsg = data.message || `HTTP ${res.status}: Failed to fetch products`;
         console.error('❌ API Error:', errorMsg);
         throw new Error(errorMsg);
       }
-      
+
       const productsList = data.products || [];
       console.log('✅ Products fetched:', productsList.length);
       setProducts(productsList);
