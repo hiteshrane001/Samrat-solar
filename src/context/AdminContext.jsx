@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const AdminContext = createContext(null);
+const API_BASE = (import.meta.env.VITE_API_URL || '') + '/api';
 
 export function AdminProvider({ children }) {
   const [adminUser, setAdminUser] = useState(null);
@@ -17,7 +18,7 @@ export function AdminProvider({ children }) {
 
   const adminLogin = useCallback(async (email, password) => {
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -55,7 +56,7 @@ export function AdminProvider({ children }) {
     }
 
     try {
-      const res = await fetch('/api/auth/me', {
+      const res = await fetch(`${API_BASE}/auth/me`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -80,7 +81,7 @@ export function AdminProvider({ children }) {
   // Dashboard stats
   const fetchStats = useCallback(async () => {
     try {
-      const res = await fetch('/api/admin/dashboard/stats', {
+      const res = await fetch(`${API_BASE}/admin/dashboard/stats`, {
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });
       const data = await res.json();
@@ -97,7 +98,7 @@ export function AdminProvider({ children }) {
       const token = getToken();
       console.log('🔍 Fetching products with token:', token ? 'YES' : 'NO');
       
-      const res = await fetch('/api/admin/products', {
+      const res = await fetch(`${API_BASE}/admin/products`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
@@ -122,7 +123,7 @@ export function AdminProvider({ children }) {
 
   const createProduct = useCallback(async (productData) => {
     try {
-      const res = await fetch('/api/admin/products', {
+      const res = await fetch(`${API_BASE}/admin/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +144,7 @@ export function AdminProvider({ children }) {
 
   const updateProduct = useCallback(async (id, productData) => {
     try {
-      const res = await fetch(`/api/admin/products/${id}`, {
+      const res = await fetch(`${API_BASE}/admin/products/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -164,7 +165,7 @@ export function AdminProvider({ children }) {
 
   const deleteProduct = useCallback(async (id) => {
     try {
-      const res = await fetch(`/api/admin/products/${id}`, {
+      const res = await fetch(`${API_BASE}/admin/products/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });
@@ -182,7 +183,7 @@ export function AdminProvider({ children }) {
   // Users management
   const fetchUsers = useCallback(async () => {
     try {
-      const res = await fetch('/api/admin/users', {
+      const res = await fetch(`${API_BASE}/admin/users`, {
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });
       const data = await res.json();
@@ -194,7 +195,7 @@ export function AdminProvider({ children }) {
 
   const updateUser = useCallback(async (id, userData) => {
     try {
-      const res = await fetch(`/api/admin/users/${id}`, {
+      const res = await fetch(`${API_BASE}/admin/users/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -216,7 +217,7 @@ export function AdminProvider({ children }) {
   // Orders management
   const fetchOrders = useCallback(async () => {
     try {
-      const res = await fetch('/api/admin/orders', {
+      const res = await fetch(`${API_BASE}/admin/orders`, {
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });
       const data = await res.json();
@@ -228,7 +229,7 @@ export function AdminProvider({ children }) {
 
   const updateOrder = useCallback(async (id, orderData) => {
     try {
-      const res = await fetch(`/api/admin/orders/${id}`, {
+      const res = await fetch(`${API_BASE}/admin/orders/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
