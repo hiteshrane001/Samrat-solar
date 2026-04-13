@@ -358,38 +358,26 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ======= HERO BANNER (Modern Boxed Layout) ======= */}
-      <section className="ss-hero-boxed" id="hero-section">
-        <div className="ss-hero-container">
-          {/* Text Box (approx 30-35%) */}
-          <div className="ss-hero-box ss-hero-box-text">
-            <h1 className="ss-hero-headline-alt">
-              Power Your Home<br />
-              With <span className="ss-hero-highlight-alt">Confidence</span>
-            </h1>
-
-            <p className="ss-hero-sub-alt">
-              Premium solar panels · Expert installation · Smart monitoring<br />
-              Backed by our 25-Year performance warranty.
-            </p>
-
-            <div className="ss-hero-actions-alt">
-              <button className="ss-btn-primary" onClick={handleShopNow} id="hero-shop-btn">
-                🛒 Shop Now
-              </button>
-              <button className="ss-btn-outline-alt" onClick={handleGetQuote} id="hero-quote-btn">
-                📋 Get Free Quote
-              </button>
-            </div>
-          </div>
-
-          {/* Right Box (Empty / Placeholder per request) */}
-          <div className="ss-hero-box ss-hero-box-image">
+      {/* ======= HERO BANNER (Full Image with Buttons) ======= */}
+      <section className="ss-hero-full" id="hero-section">
+        <div className="ss-hero-full-container">
+          {/* Full Image with Buttons Overlay */}
+          <div className="ss-hero-full-image" onClick={() => setPage('login')}>
             <img 
               src="https://cdn11.bigcommerce.com/s-unnwlv5df8/images/stencil/original/image-manager/pm-surya-yojna-banner-v2-02-3-.jpg?t=1775560302"
               alt="Surya Yojana Solar Banner"
               className="ss-hero-image-fill"
             />
+            
+            {/* Buttons at Bottom Right */}
+            <div className="ss-hero-buttons-overlay">
+              <button className="ss-btn-primary" onClick={(e) => { e.stopPropagation(); handleShopNow(); }} id="hero-shop-btn">
+                🛒 Shop Now
+              </button>
+              <button className="ss-btn-outline-alt" onClick={(e) => { e.stopPropagation(); handleGetQuote(); }} id="hero-quote-btn">
+                📋 Get Free Quote
+              </button>
+            </div>
           </div>
         </div>
       </section>
