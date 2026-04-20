@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext';
 export default function Navbar() {
   const { step, totalPanels, logout, user, page, setPage, setStep } = useApp();
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const panels = totalPanels();
   const initial = user?.name ? user.name.charAt(0).toUpperCase() : 'U';
 
@@ -11,6 +12,7 @@ export default function Navbar() {
     setPage(navPage);
     if (targetStep) setStep(targetStep);
     setUserDropdownOpen(false);
+    setMobileMenuOpen(false);
   };
 
   // ✅ Login-protected Shop redirect
@@ -41,8 +43,20 @@ export default function Navbar() {
             <span>Premium Solar Solutions</span>
           </div>
         </button>
+
+        {/* Hamburger Button */}
+        <button
+          className={`hamburger-btn ${mobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
         
-        <div className="nav-menu">
+        <div className={`nav-menu ${mobileMenuOpen ? 'mobile-open' : ''}`}>
           <button 
             className={`nav-item ${page === 'configurator' && step === 1 ? 'active' : ''}`}
             onClick={() => handleNavClick('configurator', 1)}
@@ -107,6 +121,11 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Mobile overlay */}
+      {mobileMenuOpen && (
+        <div className="mobile-overlay show" onClick={() => setMobileMenuOpen(false)} />
+      )}
     </nav>
   );
 }

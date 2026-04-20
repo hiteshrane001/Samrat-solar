@@ -1,0 +1,103 @@
+Date : 2026-04-20 14:11:52
+Directory : c:\Users\hites\OneDrive\Desktop\prj\src
+Total : 56 files,  2914 codes, 57 comments, 300 blanks, all 3271 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         35 |      3,977 |         64 |        367 |      4,408 |
+| PostCSS        |          2 |      1,272 |         44 |         68 |      1,384 |
+| HTML           |          1 |        -14 |          0 |         -1 |        -15 |
+| JavaScript     |         16 |       -816 |        -51 |       -132 |       -999 |
+| JSON           |          2 |     -1,505 |          0 |         -2 |     -1,507 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         56 |      2,914 |         57 |        300 |      3,271 |
+| . (Files)                                                                   |          3 |      1,372 |         48 |         84 |      1,504 |
+| ..                                                                          |         18 |     -2,488 |        -54 |       -166 |     -2,708 |
+| ..\server                                                                   |         18 |     -2,488 |        -54 |       -166 |     -2,708 |
+| ..\server (Files)                                                           |          4 |     -1,691 |        -14 |        -32 |     -1,737 |
+| ..\server\config                                                            |          1 |        -11 |          0 |         -3 |        -14 |
+| ..\server\middleware                                                        |          2 |        -57 |          0 |        -13 |        -70 |
+| ..\server\models                                                            |          3 |       -162 |         -7 |        -17 |       -186 |
+| ..\server\public                                                            |          3 |        -16 |          0 |         -3 |        -19 |
+| ..\server\public (Files)                                                    |          1 |        -14 |          0 |         -1 |        -15 |
+| ..\server\public\assets                                                     |          2 |         -2 |          0 |         -2 |         -4 |
+| ..\server\routes                                                            |          4 |       -468 |        -32 |        -87 |       -587 |
+| ..\server\services                                                          |          1 |        -83 |         -1 |        -11 |        -95 |
+| components                                                                  |         14 |        556 |          2 |         49 |        607 |
+| context                                                                     |          3 |        574 |         19 |         66 |        659 |
+| data                                                                        |          1 |         73 |          0 |          8 |         81 |
+| pages                                                                       |         16 |      2,748 |         39 |        237 |      3,024 |
+| pages (Files)                                                               |         11 |      2,277 |         38 |        194 |      2,509 |
+| pages\steps                                                                 |          5 |        471 |          1 |         43 |        515 |
+| services                                                                    |          1 |         79 |          3 |         22 |        104 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                    | language       | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\hites\OneDrive\Desktop\prj\server\config\db.js                     | JavaScript     |        -11 |          0 |         -3 |        -14 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\index.js                         | JavaScript     |        -61 |        -10 |        -15 |        -86 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\middleware\adminAuth.js          | JavaScript     |        -30 |          0 |         -7 |        -37 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\middleware\auth.js               | JavaScript     |        -27 |          0 |         -6 |        -33 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\models\Order.js                  | JavaScript     |        -73 |          0 |         -3 |        -76 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\models\Product.js                | JavaScript     |        -43 |         -7 |         -9 |        -59 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\models\User.js                   | JavaScript     |        -46 |          0 |         -5 |        -51 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\package-lock.json                | JSON           |     -1,482 |          0 |         -1 |     -1,483 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\package.json                     | JSON           |        -23 |          0 |         -1 |        -24 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\public\assets\index-B8QOdWPL.js  | JavaScript     |         -1 |          0 |         -1 |         -2 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\public\assets\index-CnclcCYw.css | PostCSS        |         -1 |          0 |         -1 |         -2 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\public\index.html                | HTML           |        -14 |          0 |         -1 |        -15 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\admin.js                  | JavaScript     |       -211 |         -6 |        -32 |       -249 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\auth.js                   | JavaScript     |        -60 |         -3 |        -16 |        -79 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\orders.js                 | JavaScript     |       -161 |        -19 |        -32 |       -212 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\products.js               | JavaScript     |        -36 |         -4 |         -7 |        -47 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\seed.js                          | JavaScript     |       -125 |         -4 |        -15 |       -144 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\services\PaymentService.js       | JavaScript     |        -83 |         -1 |        -11 |        -95 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\App.jsx                             | JavaScript JSX |         81 |          4 |         12 |         97 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\AddressForm.jsx          | JavaScript JSX |         58 |          0 |          3 |         61 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\AdminNavbar.jsx          | JavaScript JSX |         47 |          0 |          5 |         52 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\BOSGrid.jsx              | JavaScript JSX |         38 |          0 |          2 |         40 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\Breadcrumb.jsx           | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\ErrorBoundary.jsx        | JavaScript JSX |         61 |          1 |          7 |         69 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\HeroSection.jsx          | JavaScript JSX |         31 |          0 |          1 |         32 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\Navbar.jsx               | JavaScript JSX |        101 |          1 |         11 |        113 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\OrderSummary.jsx         | JavaScript JSX |         34 |          0 |          3 |         37 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\PaymentSelector.jsx      | JavaScript JSX |         40 |          0 |          3 |         43 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\ProductCard.jsx          | JavaScript JSX |         66 |          0 |          3 |         69 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\QuantityControl.jsx      | JavaScript JSX |         14 |          0 |          1 |         15 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\Stepper.jsx              | JavaScript JSX |         32 |          0 |          4 |         36 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\TopBar.jsx               | JavaScript JSX |          8 |          0 |          1 |          9 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\components\TrustBadges.jsx          | JavaScript JSX |         10 |          0 |          1 |         11 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\context\AdminContext.jsx            | JavaScript JSX |        238 |          5 |         27 |        270 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\context\AppContext.jsx              | JavaScript JSX |        252 |         12 |         24 |        288 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\context\CartContext.jsx             | JavaScript JSX |         84 |          2 |         15 |        101 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\data\constants.js                   | JavaScript     |         73 |          0 |          8 |         81 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\index.css                           | PostCSS        |      1,273 |         44 |         69 |      1,386 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\main.jsx                            | JavaScript JSX |         18 |          0 |          3 |         21 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\AdminDashboard.jsx            | JavaScript JSX |         80 |          0 |          9 |         89 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\AdminLoginPage.jsx            | JavaScript JSX |         75 |          0 |         10 |         85 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\AdminOrders.jsx               | JavaScript JSX |        384 |         11 |         31 |        426 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\AdminProducts.jsx             | JavaScript JSX |        501 |          3 |         27 |        531 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\AdminUsers.jsx                | JavaScript JSX |        129 |          0 |         11 |        140 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\CartPage.jsx                  | JavaScript JSX |        241 |          3 |         23 |        267 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\ConfiguratorPage.jsx          | JavaScript JSX |         34 |          0 |          3 |         37 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\HomePage.jsx                  | JavaScript JSX |        542 |         19 |         47 |        608 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\LoginPage.jsx                 | JavaScript JSX |        111 |          0 |         14 |        125 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\ShopPage.jsx                  | JavaScript JSX |        127 |          2 |         16 |        145 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\SuccessPage.jsx               | JavaScript JSX |         53 |          0 |          3 |         56 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\steps\Step1Technology.jsx     | JavaScript JSX |         66 |          1 |          7 |         74 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\steps\Step2Panels.jsx         | JavaScript JSX |        131 |          0 |         12 |        143 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\steps\Step3Inverter.jsx       | JavaScript JSX |        138 |          0 |         13 |        151 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\steps\Step4BOS.jsx            | JavaScript JSX |         61 |          0 |          5 |         66 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\pages\steps\Step5Checkout.jsx       | JavaScript JSX |         75 |          0 |          6 |         81 |
+| c:\Users\hites\OneDrive\Desktop\prj\src\services\api.js                     | JavaScript     |         79 |          3 |         22 |        104 |
+| Total                                                                       |                |      2,914 |         57 |        300 |      3,271 |
++-----------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

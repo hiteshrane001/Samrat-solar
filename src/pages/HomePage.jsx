@@ -267,6 +267,7 @@ const systemSizeData = [
 export default function HomePage() {
   const { setPage, user } = useApp();
   const [isVisible, setIsVisible] = useState({});
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const observerRef = useRef(null);
 
   useEffect(() => {
@@ -291,6 +292,7 @@ export default function HomePage() {
 
   const handleGetQuote = () => {
     setPage('configurator');
+    setMobileNavOpen(false);
   };
 
   // ✅ Login-protected Shop redirect
@@ -300,13 +302,16 @@ export default function HomePage() {
     } else {
       setPage('shop');
     }
+    setMobileNavOpen(false);
   };
 
   const handleLogin = () => {
     setPage('login');
+    setMobileNavOpen(false);
   };
 
   const scrollToSection = (sectionId) => {
+    setMobileNavOpen(false);
     const el = document.getElementById(sectionId);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -338,7 +343,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          <nav className="ss-header-nav">
+          {/* Hamburger Button */}
+          <button
+            className={`ss-hamburger-btn ${mobileNavOpen ? 'open' : ''}`}
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            aria-label="Toggle navigation"
+            aria-expanded={mobileNavOpen}
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+
+          <nav className={`ss-header-nav ${mobileNavOpen ? 'mobile-open' : ''}`}>
             <button className="ss-nav-link" onClick={() => scrollToSection('benefits-section')} id="nav-benefits-btn">
               Why Solar
             </button>
@@ -348,7 +365,7 @@ export default function HomePage() {
             <button className="ss-nav-link" onClick={handleShopNow} id="nav-shop-btn">
               Shop
             </button>
-            <button className="ss-nav-link" onClick={() => setPage('cart')} id="nav-cart-btn">
+            <button className="ss-nav-link" onClick={() => { setPage('cart'); setMobileNavOpen(false); }} id="nav-cart-btn">
               🛒 Cart
             </button>
             <button className="ss-nav-cta" onClick={handleLogin} id="nav-login-btn">
@@ -356,6 +373,11 @@ export default function HomePage() {
             </button>
           </nav>
         </div>
+
+        {/* Mobile overlay */}
+        {mobileNavOpen && (
+          <div className="mobile-overlay show" onClick={() => setMobileNavOpen(false)} style={{ zIndex: 498 }} />
+        )}
       </header>
 
       {/* ======= HERO BANNER (Full Image with Buttons) ======= */}

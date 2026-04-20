@@ -1,0 +1,54 @@
+Date : 2026-04-20 14:11:26
+Directory : c:\Users\hites\OneDrive\Desktop\prj\server
+Total : 18 files,  2488 codes, 54 comments, 166 blanks, all 2708 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          2 |      1,505 |          0 |          2 |      1,507 |
+| JavaScript |         14 |        968 |         54 |        162 |      1,184 |
+| HTML       |          1 |         14 |          0 |          1 |         15 |
+| PostCSS    |          1 |          1 |          0 |          1 |          2 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         18 |      2,488 |         54 |        166 |      2,708 |
+| . (Files)                                                                   |          4 |      1,691 |         14 |         32 |      1,737 |
+| config                                                                      |          1 |         11 |          0 |          3 |         14 |
+| middleware                                                                  |          2 |         57 |          0 |         13 |         70 |
+| models                                                                      |          3 |        162 |          7 |         17 |        186 |
+| public                                                                      |          3 |         16 |          0 |          3 |         19 |
+| public (Files)                                                              |          1 |         14 |          0 |          1 |         15 |
+| public\assets                                                               |          2 |          2 |          0 |          2 |          4 |
+| routes                                                                      |          4 |        468 |         32 |         87 |        587 |
+| services                                                                    |          1 |         83 |          1 |         11 |         95 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                    | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\hites\OneDrive\Desktop\prj\server\config\db.js                     | JavaScript |         11 |          0 |          3 |         14 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\index.js                         | JavaScript |         61 |         10 |         15 |         86 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\middleware\adminAuth.js          | JavaScript |         30 |          0 |          7 |         37 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\middleware\auth.js               | JavaScript |         27 |          0 |          6 |         33 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\models\Order.js                  | JavaScript |         73 |          0 |          3 |         76 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\models\Product.js                | JavaScript |         43 |          7 |          9 |         59 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\models\User.js                   | JavaScript |         46 |          0 |          5 |         51 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\package-lock.json                | JSON       |      1,482 |          0 |          1 |      1,483 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\package.json                     | JSON       |         23 |          0 |          1 |         24 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\public\assets\index-B8QOdWPL.js  | JavaScript |          1 |          0 |          1 |          2 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\public\assets\index-CnclcCYw.css | PostCSS    |          1 |          0 |          1 |          2 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\public\index.html                | HTML       |         14 |          0 |          1 |         15 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\admin.js                  | JavaScript |        211 |          6 |         32 |        249 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\auth.js                   | JavaScript |         60 |          3 |         16 |         79 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\orders.js                 | JavaScript |        161 |         19 |         32 |        212 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\routes\products.js               | JavaScript |         36 |          4 |          7 |         47 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\seed.js                          | JavaScript |        125 |          4 |         15 |        144 |
+| c:\Users\hites\OneDrive\Desktop\prj\server\services\PaymentService.js       | JavaScript |         83 |          1 |         11 |         95 |
+| Total                                                                       |            |      2,488 |         54 |        166 |      2,708 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
