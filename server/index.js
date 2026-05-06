@@ -41,7 +41,7 @@ const limiter = rateLimit({
   handler: (req, res) => {
     res.status(429).json({ error: 'Too many requests, please try again later.' });
   },
-  skip: (req) => process.env.NODE_ENV === 'development' // Disable in dev
+  skip: (req) => process.env.NODE_ENV === 'development' || req.path === '/api/orders/webhook' // Disable in dev and for webhook
 });
 app.use('/api/', limiter);
 

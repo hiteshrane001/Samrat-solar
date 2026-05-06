@@ -208,4 +208,80 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
+// POST /api/orders/webhook — Razorpay webhook handler
+router.post('/webhook', async (req, res) => {
+  try {
+    const crypto = await import('crypto').then(m => m.default);
+    const signature = req.headers['x-razorpay-signature'];
+    const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
+
+    if (!webhookSecret) {
+      console.warn('⚠️ RAZORPAY_WEBHOOK_SECRET not configured. Webhook verification skipped.');
+      return res.status(400).json({ message: 'Webhook secret not configured' });
+    }
+
+    // Verify webhook signature
+    const body = JSON.stringify(req.body);
+    const hmac = crypto.createHmac('sha256', webhookSecret);
+    const generatedSignature = hmac.update(body).digest('hex');
+
+    if (generatedSignature !== signature) {
+      console.warn('❌ Webhook signature mismatch. Unauthorized webhook call.');
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    const event = req.body.event;
+    const paymentData = req.body.payload?.payment?.entity || req.body.payload?.order?.entity;
+
+    if (!paymentData) {
+      return res.status(400).json({ message: 'No payment data in webhook' });
+    }
+
+    const razorpayOrderId = paymentData.order_id || paymentData.id;
+    
+    // Find order by razorpay order ID
+    const order = await Order.findOne({ razorpayOrderId });
+
+    if (!order) {
+      console.warn(`⚠️ Order not found for Razorpay Order ID: ${razorpayOrderId}`);
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    // Handle different payment events
+    switch (event) {
+      case 'payment.authorized':
+      case 'payment.captured':
+        order.paymentStatus = 'paid';
+        order.razorpayPaymentId = paymentData.id;
+        order.paidAt = new Date();
+        order.status = 'confirmed';
+        await order.save();
+        console.log(`✅ Payment authorized/captured for Order: ${order.orderId}`);
+        break;
+
+      case 'payment.failed':
+        order.paymentStatus = 'failed';
+        order.status = 'cancelled';
+        await order.save();
+        console.log(`❌ Payment failed for Order: ${order.orderId}`);
+        break;
+
+      case 'refund.created':
+        order.paymentStatus = 'refunded';
+        order.status = 'cancelled';
+        await order.save();
+        console.log(`💰 Refund issued for Order: ${order.orderId}`);
+        break;
+
+      default:
+        console.log(`📝 Unhandled webhook event: ${event}`);
+    }
+
+    res.json({ status: 'ok' });
+  } catch (err) {
+    console.error('Webhook error:', err);
+    res.status(500).json({ message: 'Webhook processing failed' });
+  }
+});
+
 export default router;
