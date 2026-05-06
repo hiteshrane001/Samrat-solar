@@ -3,6 +3,7 @@ import auth from '../middleware/auth.js';
 import Order from '../models/Order.js';
 import Product from '../models/Product.js';
 import { createRazorpayOrder, verifyPaymentSignature } from '../services/PaymentService.js';
+import crypto from 'crypto';
 
 const router = express.Router();
 
@@ -106,10 +107,10 @@ router.post('/', auth, async (req, res) => {
 // POST /api/orders/create-payment — Initiate Razorpay payment
 router.post('/create-payment', auth, async (req, res) => {
   try {
-    const { orderId, amount } = req.body;
+    const { orderId } = req.body;
 
-    if (!orderId || !amount) {
-      return res.status(400).json({ message: 'Order ID and amount are required.' });
+    if (!orderId) {
+      return res.status(400).json({ message: 'Order ID is required.' });
     }
 
     // Verify order exists and belongs to user
@@ -118,9 +119,13 @@ router.post('/create-payment', auth, async (req, res) => {
       return res.status(404).json({ message: 'Order not found.' });
     }
 
+    if (!order.total || isNaN(order.total)) {
+      throw new Error('Order total is invalid or 0. Cannot initiate payment.');
+    }
+
     // Create Razorpay order
     const razorpayOrder = await createRazorpayOrder(
-      Math.round(amount * 100), // Convert to paise
+      Math.round(order.total * 100), // Convert to paise from DB total
       orderId,
       req.user.email,
       req.user.phone
@@ -133,7 +138,7 @@ router.post('/create-payment', auth, async (req, res) => {
     res.json({
       razorpayOrderId: razorpayOrder.id,
       razorpayKeyId: process.env.RAZORPAY_KEY_ID,
-      amount: Math.round(amount * 100),
+      amount: Math.round(order.total * 100),
       currency: 'INR',
       userName: req.user.name,
       userEmail: req.user.email,
@@ -142,7 +147,10 @@ router.post('/create-payment', auth, async (req, res) => {
     });
   } catch (err) {
     console.error('Payment creation error:', err);
-    res.status(400).json({ message: err.message || 'Failed to create payment order.' });
+    res.status(400).json({ 
+      message: err.message || 'Failed to create payment order.',
+      error: process.env.NODE_ENV === 'development' ? err.stack : undefined 
+    });
   }
 });
 
@@ -211,7 +219,6 @@ router.get('/:id', auth, async (req, res) => {
 // POST /api/orders/webhook — Razorpay webhook handler
 router.post('/webhook', async (req, res) => {
   try {
-    const crypto = await import('crypto').then(m => m.default);
     const signature = req.headers['x-razorpay-signature'];
     const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
 
@@ -221,7 +228,7 @@ router.post('/webhook', async (req, res) => {
     }
 
     // Verify webhook signature
-    const body = JSON.stringify(req.body);
+    const body = req.rawBody.toString();
     const hmac = crypto.createHmac('sha256', webhookSecret);
     const generatedSignature = hmac.update(body).digest('hex');
 

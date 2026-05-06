@@ -1,4 +1,5 @@
-import Razorpay from 'razorpay';
+import RazorpayPackage from 'razorpay';
+const Razorpay = RazorpayPackage.default || RazorpayPackage;
 import crypto from 'crypto';
 
 // Initialize Razorpay lazily to ensure env vars are loaded
@@ -11,10 +12,20 @@ function getRazorpayInstance() {
       console.warn('Please add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET to .env');
       return null;
     }
-    razorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET
-    });
+    try {
+      razorpay = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY_ID,
+        key_secret: process.env.RAZORPAY_KEY_SECRET
+      });
+      
+      if (!razorpay.orders) {
+        console.error('❌ Razorpay instance initialized but "orders" property is missing. Import might be wrong.');
+        return null;
+      }
+    } catch (err) {
+      console.error('❌ Failed to initialize Razorpay SDK:', err);
+      return null;
+    }
   }
   return razorpay;
 }
@@ -29,13 +40,11 @@ export async function createRazorpayOrder(amountInPaise, orderId, customerEmail,
     const options = {
       amount: Math.round(amountInPaise), // Amount in paise
       currency: 'INR',
-      receipt: orderId,
-      payment_capture: 1, // Auto capture payment
-      customer_notify: 1,
+      receipt: String(orderId),
       notes: {
-        orderId: orderId,
-        email: customerEmail,
-        phone: customerPhone
+        orderId: String(orderId),
+        email: String(customerEmail || ''),
+        phone: String(customerPhone || '')
       }
     };
 
@@ -43,7 +52,11 @@ export async function createRazorpayOrder(amountInPaise, orderId, customerEmail,
     return order;
   } catch (err) {
     console.error('Razorpay order creation error:', err);
-    throw new Error('Failed to create payment order: ' + err.message);
+    // Log the error object details if available
+    if (err.error) console.error('Razorpay Error Details:', err.error);
+    
+    const errorMessage = err.message || (err.error && err.error.description) || 'Unknown Razorpay error';
+    throw new Error('Failed to create payment order: ' + errorMessage);
   }
 }
 

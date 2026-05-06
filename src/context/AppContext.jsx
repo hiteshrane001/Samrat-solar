@@ -198,7 +198,6 @@ export function AppProvider({ children }) {
           order_id: paymentRes.razorpayOrderId,
           name: 'Samrat Solar',
           description: `${selectedPanels.length} Solar Panels + ${inverter}kW Inverter`,
-          customer_id: user?.id,
           prefill: {
             name: orderRes.order.address.name || '',
             email: user?.email || '',
