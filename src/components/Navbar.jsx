@@ -84,7 +84,7 @@ export default function Navbar() {
         </div>
         
         <div className="nav-right">
-          <div className="nav-toll">📞 1800-2121-321</div>
+          <div className="nav-toll">📞 +91 7620646375</div>
           
           <button 
             className={`nav-cart ${page === 'cart' ? 'active' : ''}`}

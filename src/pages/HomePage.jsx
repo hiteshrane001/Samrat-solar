@@ -590,7 +590,7 @@ export default function HomePage() {
             <p className="ss-footer-address">
               Samrat Solar Pvt. Ltd.<br />
               Dhule, Maharashtra, India<br />
-              <a href="tel:1800-SOLAR-99" className="ss-footer-contact">📞 1800-SOLAR-99</a><br />
+              <a href="tel:+917620646375" className="ss-footer-contact">📞 +91 7620646375</a><br />
               <a href="mailto:support@samratsolar.com" className="ss-footer-contact">✉️ support@samratsolar.com</a>
             </p>
             <div className="ss-footer-social">
